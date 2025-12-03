@@ -1,6 +1,7 @@
 ﻿namespace Builder;
 
-// The Concrete Builder classes follow the Builder interface and provide specific implementations of the building steps. Your program may have several variations of Builders, implemented differently.
+// The Concrete Builder classes follow the Builder interface and provide specific implementations of the building steps.
+// Your program may have several variations of Builders, implemented differently.
 public class ConcreteBuilder: IBuilder
 {
     private Product _product = new Product();
@@ -8,28 +9,28 @@ public class ConcreteBuilder: IBuilder
     // A fresh builder instance should contain a blank product object, which is used in further assembly.
     public ConcreteBuilder()
     {
-        this.Reset();
+        Reset();
     }
 
     public void Reset()
     {
-        this._product = new Product();
+        _product = new Product();
     }
 
     // All production steps work with the same product instance.
     public void BuildPartA()
     {
-        this._product.Add("PartA1");
+        _product.Add("PartA1");
     }
 
     public void BuildPartB()
     {
-        this._product.Add("PartB1");
+        _product.Add("PartB1");
     }
 
     public void BuildPartC()
     {
-        this._product.Add("PartC1");
+        _product.Add("PartC1");
     }
 
     // Concrete Builders are supposed to provide their own methods for retrieving results.
@@ -40,9 +41,9 @@ public class ConcreteBuilder: IBuilder
     // However, this behavior is not mandatory, and you can make your builders wait for an explicit reset call from the client code before disposing of the previous result.
     public Product GetProduct()
     {
-        Product result = this._product;
+        Product result = _product;
 
-        this.Reset();
+        Reset();
 
         return result;
     }
